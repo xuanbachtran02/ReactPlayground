@@ -8,13 +8,13 @@ class Navbar extends Component {
 
     render() {
         return(
-            <div /*className="topnav" */>
+            <div>
                 <h1 className="navbar-logo"></h1>
                 <div className="menu-icon">
 
                 </div>
 
-                <ul>
+                <ul className="topnav">
                     {MenuItems.map((item, index) => {
                         return (
                             <li>
