@@ -1,7 +1,14 @@
 import React from 'react';
 import cat_pic from '../images/cat_pic.png'
-import fb_svg from '../images/socials_icon/facebook.svg'
-  
+
+// first character of function name must be capitalized
+function Socials_link(props) {
+    return <a href= {props.url} target="_blank" title={props.title}>
+        <img src={props.src} width="40px" height="40px" />
+    </a>
+}
+
+
 const Home = () => {
   return (
     <div>
@@ -22,11 +29,11 @@ const Home = () => {
         <h2>Socials</h2>
       <div class="socials"> 
         <p>
-          <a href= {"https://www.facebook.com/profile.php?id=100004543248099"} target="_blank"
-            title="Facebook">
-            <img src={fb_svg} width="40px" height="40px" />
-          </a>
-
+          <Socials_link url="https://www.facebook.com/profile.php?id=100004543248099" title='Facebook' src={require('../images/socials_icon/facebook.svg').default}/>
+          <Socials_link url="https://www.instagram.com/petertran02/?hl=en" title='Instagram' src={require('../images/socials_icon/instagram.svg').default}/>
+          <Socials_link url="https://github.com/xuanbachtran02" title='GitHub' src={require('../images/socials_icon/github.svg').default}/>
+          <Socials_link url="https://open.spotify.com/user/hh2rj0p5m4hqm1g8d5wije1r6?si=381bacd5be8a4c6b" title='Spotify'src={require('../images/socials_icon/spotify.svg').default}/>
+          <Socials_link url="https://discord.com/users/761308808823570453" title='Discord' src={require('../images/socials_icon/discord.svg').default}/>
         </p>
         </div>
       </article>
@@ -40,3 +47,6 @@ const Home = () => {
 };
   
 export default Home;
+
+
+ 

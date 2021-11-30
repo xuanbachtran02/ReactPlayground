@@ -1,21 +1,34 @@
-import React from 'react';
+import React, {Component} from 'react';
 import {  Link } from "react-router-dom";
-const Navbar= () =>{
-  return (
-  <div>
-    <li>
-      <Link to="/">Home</Link>
-    </li>
-    <li>
-      <Link to="/contribution">Contribution</Link>
-    </li>
-    <li>
-      <Link to="/interest">Interest</Link>
-    </li>
-    <li>
-      <Link to="/tools">Tools</Link>
-    </li>
-  </div>
-  );
+import {MenuItems} from './MenuItems'
+
+
+class Navbar extends Component {
+    state = {clicked: false}
+
+    render() {
+        return(
+            <div /*className="topnav" */>
+                <h1 className="navbar-logo"></h1>
+                <div className="menu-icon">
+
+                </div>
+
+                <ul>
+                    {MenuItems.map((item, index) => {
+                        return (
+                            <li>
+                                <Link to={item.link_to}>{item.section}</Link>
+                            </li>
+                        )
+                    })}
+
+                </ul>
+            </div>
+        )
+    }
+  
+
 }
+
 export default Navbar;

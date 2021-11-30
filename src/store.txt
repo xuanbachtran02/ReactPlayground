@@ -4,3 +4,23 @@
 <Route path='/team' component={Teams} />
 <Route path='/blogs' component={Blogs} />
 <Route path='/sign-up' component={SignUp} />
+
+const Navbar= () =>{
+  return (
+  <div className='topnav'>
+    <li>
+      <Link to="/">Home</Link>
+    </li>
+    <li>
+      <Link to="/contribution">Contribution</Link>
+    </li>
+    <li>
+      <Link to="/interest">Interest</Link>
+    </li>
+    <li>
+      <Link to="/tools">Tools</Link>
+    </li>
+  </div>
+  );
+}
+export default Navbar;
