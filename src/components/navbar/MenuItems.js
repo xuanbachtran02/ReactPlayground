@@ -4,8 +4,8 @@ export const MenuItems = [
         link_to: '/',
     },
     {
-        section: 'Contribution',
-        link_to: '/contribution',
+        section: 'Projects',
+        link_to: '/projects',
     },
     {
         section: 'Interest',

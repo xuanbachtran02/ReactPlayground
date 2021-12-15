@@ -1,19 +1,19 @@
 html {
   font-family: 'Open Sans', sans-serif;
-  background: url(images/pattern_light.jpg)
+  font-size: 20px;
+  line-height: 2;
 }
 
 body {
-  padding: 10px 100px 300px 100px;
-  width: 100%;
+  padding: 10px 100px 0 100px;
   max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   position: relative;
   background-color: white;
-  font-size: 20px;
-  line-height: 2;
-  text-indent: 30px;
-  
+  overflow-x: auto;
+  overflow-y: scroll;
+  /* border: solid 1px black; */
 }
 
 header {
@@ -27,64 +27,55 @@ h1 {
 }
 
 h2 {
-  margin: 0 0 0 20px;
+  margin: 0 0 0 10px;
   font-size: 30px;
 }
 
-.topnav {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  font-size: 16px;
-  font-family: sans-serif;
-  border-bottom: rgb(211, 211, 211);
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
-}
-
-.topnav a {
-  float: left;
-  width: 100px;
-  display: block;
-  color:black;
-  font-weight: 500;
-  text-align: center;
-  padding: 20px 30px;
-  text-decoration: none;
-  border-bottom: solid transparent;
-}
-
-/* Change the color of links on hover */
-.topnav a:hover {
-  color: gray;
-}
-
-/* Add a color to the active/current link */
-.topnav a.active {
-  border-bottom: 3px solid black;
+h3 {
+  margin: 20px 0 0 35px;
 }
 
 
-.about_me {
-  padding: 20px 20px 50px 0;
+.content_container {
+  margin: 20px 20px 50px 0;
   text-indent: 30px;
-  margin-left: 10px;
   width: 100%;
   height: 100%;
+  /* border: 1px solid black; */
+}
+
+.self_intro {
+  font-size: 20px;
+  text-indent: 20px;
+  padding-right: 30px;
+  margin: 25x;
 }
 
 #cat_pic_about_me{
   float: left;
   max-width: 100%;
-  margin-right: 30px;
-  margin-left: 60px;
+  margin-left: 10px;
 }
+
 
 .socials{
   padding: 10px;
 }
 
 .socials a {
-  margin: 15px;
+  margin: 10px 15px 10px 10px;
+}
+
+.tobar_video {
+  float: right;
+  max-width: 100%;
+  margin-left: 10px;
+}
+
+.our_story {
+  font-size: 20px;
+  text-indent: 20px;
+  /* padding-right: 30px; */
+  margin: 30px;
+  padding: 0 0 0 0
 }

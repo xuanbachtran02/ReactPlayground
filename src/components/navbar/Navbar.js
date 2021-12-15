@@ -1,34 +1,35 @@
 import React, {Component} from 'react';
-import {  Link } from "react-router-dom";
+import './Navbar.css';
+// import {  Link } from "react-router-dom";
+// import 'bootstrap/dist/css/bootstrap.css';
 import {MenuItems} from './MenuItems'
+import { Container } from 'reactstrap';
+import {Navbar, Nav, NavDropdown} from 'react-bootstrap'
+import { NavLink } from 'react-router-dom';
 
 
-class Navbar extends Component {
-    state = {clicked: false}
-
+class MyNavbar extends Component {
+    // state = {clicked: false}
     render() {
         return(
-            <div>
-                <h1 className="navbar-logo"></h1>
-                <div className="menu-icon">
-
-                </div>
-
-                <ul className="topnav">
-                    {MenuItems.map((item, index) => {
-                        return (
-                            <li>
-                                <Link to={item.link_to}>{item.section}</Link>
-                            </li>
-                        )
-                    })}
-
-                </ul>
-            </div>
+            <Navbar className="topnav" >
+                <Container>
+                    {/* <Navbar.Brand href="#home">Peter's Site</Navbar.Brand> */}
+                    {/* <Navbar.Toggle aria-controls="basic-navbar-nav" /> */}
+                    <Navbar.Collapse id="basic-navbar-nav">
+                    <Nav>
+                        {MenuItems.map((item, index) => {
+                            return (
+                                <NavLink activeClassName="active" className='nav-links' to={item.link_to}>{item.section}</NavLink>
+                            )
+                        })}
+                    </Nav>
+                    </Navbar.Collapse>
+                </Container>
+            </Navbar>
         )
     }
-  
 
 }
 
-export default Navbar;
+export default MyNavbar;

@@ -24,3 +24,96 @@ const Navbar= () =>{
   );
 }
 export default Navbar;
+
+
+ <div>
+                <h1 className="navbar-logo"></h1>
+                <div className="menu-icon">
+
+                </div>
+
+                <ul className="topnav">
+                    {MenuItems.map((item, index) => {
+                        return (
+                            <li>
+                                <Link to={item.link_to}>{item.section}</Link>
+                            </li>
+                        )
+                    })}
+
+                </ul>
+            </div>
+
+
+.topnav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  font-size: 16px;
+  font-family: sans-serif;
+  border-bottom: rgb(211, 211, 211);
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+}
+
+.topnav a {
+  float: left;
+  width: 100px;
+  display: block;
+  color:black;
+  font-weight: 500;
+  text-align: center;
+  padding: 20px 30px;
+  text-decoration: none;
+  border-bottom: solid transparent;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  color: gray;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  border-bottom: 3px solid black;
+}
+
+
+
+
+<NavDropdown title="Dropdown" id="basic-nav-dropdown">
+                        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
+                        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
+                        </NavDropdown>
+
+
+
+<Socials_link url="https://www.facebook.com/profile.php?id=100004543248099" title='Facebook' src={require('../images/socials_icon/facebook.svg').default}/>
+          <Socials_link url="https://www.instagram.com/petertran02/?hl=en" title='Instagram' src={require('../images/socials_icon/instagram.svg').default}/>
+          <Socials_link url="https://github.com/xuanbachtran02" title='GitHub' src={require('../images/socials_icon/github.svg').default}/>
+          <Socials_link url="https://open.spotify.com/user/hh2rj0p5m4hqm1g8d5wije1r6?si=381bacd5be8a4c6b" title='Spotify'src={require('../images/socials_icon/spotify.svg').default}/>
+          <Socials_link url="https://discord.com/users/761308808823570453" title='Discord' src={require('../images/socials_icon/discord.svg').default}/>
+
+
+
+{/* <article className='content_container'>
+        <h2>About my group</h2>
+      
+        <figure className="tobar_video">      
+         <iframe width="560" height="315" src="https://www.youtube.com/embed/4iRdjA2cDns" title="YouTube video player" 
+          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen></iframe>
+          </figure>  
+
+          
+          <p className="our_story">It was in high school when I found them, a group of friends that everyone 
+          wishes they had, though not all do. Together, we went through one of the most precious and beautiful
+          period in one's lifetime. We laughed, we cried, we fought, we made up, we did it all. After high school
+          graduation, future aspirations separate us, but we all know that we will never be apart, as long as 
+          we always think about one another.</p>
+      
+      </article> */}
