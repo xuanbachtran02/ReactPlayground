@@ -25,7 +25,7 @@ const Home = () => {
             height="400"/>
         </figure>
 
-        <h2 >About me </h2> 
+        <h2>About me </h2> 
         <p className="self_intro">  My name is Peter and I'm 19 years old. 
         I'm a second-year student at De Anza College. In my free time, I enjoy coding,
         exploring programming stuff <br />(like this webiste), watching and playing sports.
@@ -43,35 +43,30 @@ const Home = () => {
 
         </div>
 
-        <h2>About my group</h2>
-        <figure className='tobar_video'>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/4iRdjA2cDns" title="YouTube video player" 
-          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen></iframe>
-        </figure>
+      </article>
         
-        <p className="our_story">It was in high school when I found them, a group of friends that everyone 
-        wishes they had, though not all do. Together, we went through one of the most precious and beautiful
-        period in one's lifetime. We laughed, we cried, we fought, we made up, we did it all. After high school
-        graduation, future aspirations separate us, but we all know that we will never be apart, as long as 
-        we always think about one another.</p>
+
+      <article>
+
+          
+
+      <figure className='tobar_video'>
+          <iframe width="512" height="288" src="https://www.youtube.com/embed/BzUhNJMb7Hg" title="YouTube video player" 
+          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen="allowfullscreen"></iframe>
+
+          </figure>
+
+          <h2 id="mg_h2">About us</h2>
+
+          <p className="our_story">"It was in high school when I found them, a group of friends that everyone 
+          wishes they had, though not all do. Together, we went through one of the most precious and beautiful
+          period in one's lifetime. We laughed, we cried, we fought, we made up, we did them all. No matter what we 
+          dealt with, we always had one another. Fastforward to high school graduation, and then future aspirations 
+          separate our path. Now our distances are calculated by thousands miles, but we all know we are never apart, 
+          as long as we always think about each another" - Peter</p>
 
       </article>
-
-      {/* <div>
-        It was in high school when I found them, a group of friends that everyone 
-        wishes they had, though not all do. Together, we went through one of the most precious and beautiful
-        period in one's lifetime. We laughed, we cried, we fought, we made up, we did it all. After high school
-        graduation, future aspirations separate us, but we all know that we will never be apart, as long as 
-        we always think about one another
-      </div>
-
-      <figure>
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/4iRdjA2cDns" title="YouTube video player" 
-          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen></iframe>
-        </figure> */}
-
 
     </div>
 

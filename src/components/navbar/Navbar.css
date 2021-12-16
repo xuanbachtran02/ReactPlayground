@@ -1,9 +1,6 @@
 
+
 .topnav {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
   font-size: 18px;
   font-family: "Helvetica Neue",sans-serif;
   border-bottom: rgb(211, 211, 211);
@@ -11,22 +8,17 @@
   border-bottom-width: 1px;
   }
   
-  .topnav a {
-    float: left;
-    width: 100px;
-    display: block;
-    color:black;
-    font-weight: 500;
-    text-align: center;
-    padding: 20px 30px;
-    text-decoration: none;
-    border-bottom: solid transparent;
+  .topnav a{
+    margin-left: 30px;
   }
 
-  .active{
-    border-bottom: 3px solid black !important;
-  }
 
-  .topnav a:hover {
-    color: gray !important;
-  }
+.dd_item {
+  margin: 0px !important;
+  font-size: 17px !important;
+  color: gray;
+}
+
+.dd_item:hover{
+  background-color: transparent !important;
+}

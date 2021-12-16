@@ -117,3 +117,38 @@ export default Navbar;
           we always think about one another.</p>
       
       </article> */}
+
+
+
+ // <Navbar className="topnav" collapseOnSelect expand="lg" bg="dark" variant="dark">
+            //     <Container>
+            //         <Navbar.Brand href="#home">Peter's Site</Navbar.Brand>
+            //         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            //         <Navbar.Collapse id="responsive-navbar-nav">
+            //         <Nav>
+            //             {MenuItems.map((item, index) => {
+            //                 return (
+            //                     // <NavLink activeClassName="active" className='nav-links' to={item.link_to}>{item.section}</NavLink>
+            //                     <Nav.Link href={item.link_to}>{item.section}</Nav.Link>
+            //                 )
+            //             })}
+                        
+            //             <NavDropdown className="drop_down" title="Link" id="navbarScrollingDropdown">
+            //                 <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+            //                 <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
+            //                 <NavDropdown.Divider />
+            //                 <NavDropdown.Item href="#action5">
+            //                     Something else here
+            //                 </NavDropdown.Item>
+            //             </NavDropdown>
+            //         </Nav>
+            //         </Navbar.Collapse>
+            //     </Container>
+            // </Navbar>
+
+
+{/* <NavDropdown.Item className="dd_item" href="#action/3.1">Action</NavDropdown.Item>
+                            <NavDropdown.Item className="dd_item" href="#action/3.2">Another action</NavDropdown.Item>
+                            <NavDropdown.Item className="dd_item" href="#action/3.3">Something</NavDropdown.Item>
+                            <NavDropdown.Divider />
+                            <NavDropdown.Item className="dd_item" href="#action/3.4">Separated link</NavDropdown.Item> */}
