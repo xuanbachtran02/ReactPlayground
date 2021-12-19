@@ -13,7 +13,7 @@ body {
   padding: 10px 100px 0 100px;
   position: relative;
   background-color: white;
-  overflow-x: auto;
+  overflow-x: scroll;
   overflow-y: scroll;
   /* border: solid 1px black; */
 

@@ -64,7 +64,7 @@ const Home = () => {
           period in one's lifetime. We laughed, we cried, we fought, we made up, we did them all. No matter what we 
           dealt with, we always had one another. Fastforward to high school graduation, and then future aspirations 
           separate our path. Now our distances are calculated by thousands miles, but we all know we are never apart, 
-          as long as we always think about each another" - Peter</p>
+          as long as we always think about each another"</p>
 
       </article>
 

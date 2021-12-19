@@ -152,3 +152,84 @@ export default Navbar;
                             <NavDropdown.Item className="dd_item" href="#action/3.3">Something</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item className="dd_item" href="#action/3.4">Separated link</NavDropdown.Item> */}
+
+// setCity(response.data.name)
+          // setTemp(Math.round(response.data.main.temp))
+          // setCondition(response.data.weather[0].main)
+          // setCountry(response.data.sys.country)
+
+ // const [temp, setTemp] = useState("NULL")
+  // const [condition, setCondition] = useState("NULL")
+  // const [country, setCountry] = useState("NULL")
+  // const [date, setDate] = useState("NULL")
+  // const [month, setMonth] = useState("NULL")
+
+
+      // return (
+    //   // JSON.stringify(data) 
+    //   <article class="widget" id="weather_widget">
+    //     <div class="weatherIcon"></div>
+    //     <div class="weatherInfo">
+    //     <div class="temperature" id="temperature"><span>0&deg;</span></div>
+    //     <div class="description">    
+    //         <div class="weatherCondition" id="weatherCondition">{apiData.weather[0].main}</div>    
+    //         <div class="location" id="location">Ho Chi Minh city, VN</div>
+    //     </div>
+    //     </div>
+    //     <div class="date" id="date">1st Jan</div>
+    //   </article>
+
+    // );
+
+      // useEffect(() => {
+  //   axios.get(apiUrl)
+  //     // .then(
+  //     //   (response) => {
+  //     //     console.log(response)
+  //     //     setData(response);
+  //     //   },
+
+  //     //   (error) => {
+  //     //     setError(error);
+  //     //   }
+  //     // )
+  //     .then((res) => res.json())
+  //     .then((data) => setData(data));
+  // }, [apiUrl]);
+
+
+    // useEffect(() => {
+  //   fetch(apiUrl)
+  //     .then((res) => res.json())
+  //     .then((data) => setData(data))
+  //     .catch(setError("Error"))}, [apiUrl]);
+
+
+
+   const milliseconds = apiData.data.dt * 1000 // 157590901500
+          const dateObject = new Date(milliseconds)
+
+          const month = dateObject.toLocaleString("en-US", {month: "long"}) 
+          const day = dateObject.toLocaleString("en-US", {day: "numeric"}) 
+
+          const hour = dateObject.toLocaleString("en-US", {hour: "numeric"}) 
+
+          const month_a = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
+                            'Aug', 'Sept', 'Oct', 'Nov', 'Dec'];
+          var month_name = month_a[month - 1]
+
+          const nth = function() {
+          if (day > 3 && day < 21) return 'th';
+              switch (day % 10) {
+                  case 1:  return "st";
+                  case 2:  return "nd";
+                  case 3:  return "rd";
+                  default: return "th";
+              }
+          }
+
+          day = day + nth(day)
+
+ // Sat, 18 Dec 2021 17:05:54 GMT
+
+ <input id="ww_user_input_city" type="text" placeholder="Enter city name" onChange={inputHandler} value={getCity} /> 

@@ -1,0 +1,128 @@
+@import url(https://fonts.googleapis.com/css?family=Poiret+One);
+
+.weather-widget {
+position: fixed;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+}
+
+#weather_widget {
+font-family: 'Poiret One';
+display: flex;  
+height: 300px;
+width: 600px;
+flex-wrap: wrap;
+cursor: pointer;
+}
+
+#weather_widget .weatherIcon {
+flex: 1 100%;
+height: 60%;
+border-top-left-radius: 20px;
+border-top-right-radius: 20px;
+background: #FAFAFA;
+display: flex;
+align-items: center;
+justify-content: space-around;
+}
+
+#weather_widget .weatherInfo {
+flex: 0 0 70%;
+height: 40%;
+background: #080705;
+border-bottom-left-radius: 20px;
+display: flex;
+align-items: center;
+color: white;
+}
+
+#weather_widget .weatherInfo .temperature {
+flex: 0 0 40%;
+width: 100%;
+font-size: 65px;
+display: flex;
+justify-content: space-around;
+}
+
+#weather_widget .weatherInfo .description {
+flex: 0 60%;
+display: flex;
+flex-direction: column;
+width: 100%;
+height: 100%;
+justify-content: center;
+}
+
+#weather_widget .weatherInfo .description .weatherCondition {
+text-transform: uppercase;
+font-size: 35px;
+font-weight: 100;
+}
+
+#weather_widget .weatherInfo .description .place {
+font-size: 15px;
+}
+
+#weather_widget .date {
+flex: 0 0 30%;
+height: 40%;
+background: #70C1B3;
+border-bottom-right-radius: 20px; 
+display: flex;
+justify-content: space-around;
+align-items: center;
+color: white;
+font-size: 30px;
+font-weight: 800;
+}
+
+#weather_widget p {
+position: fixed;
+bottom: 0%;
+right: 2%;
+}
+
+#weather_widget p a {
+text-decoration: none;
+color: #E4D6A7;
+font-size: 10px;
+}
+
+.ww_user_input {
+font-size: 16px;
+margin: 30px 0 0 20px;
+}
+
+#ww_user_input_city {
+width: 80%;
+border:2px solid #aaa;
+border-radius:4px;
+margin:8px 0;
+outline:none;
+padding:8px;
+box-sizing:border-box;
+transition:.3s;
+}
+  
+  
+#ww_user_input_city:focus{
+border-color:dodgerBlue;
+box-shadow:0 0 8px 0 dodgerBlue;
+}
+
+#search_ww {
+margin: 8px;
+padding: 8px;
+background-image: url('./weather-icon/search_icon.svg');
+background-size: cover;
+width: 30px;
+height: 30px;
+border-radius: 4px;
+background-color: white;
+border: none;
+}
+
+#ww_loading {
+margin-top: 30px;
+}
