@@ -3,7 +3,7 @@ import './Navbar.css';
 import {MenuItems} from './MenuItems'
 import {DropdownItems} from './DropdownItems'
 import { Container } from 'reactstrap';
-import {Navbar, Nav, NavDropdown} from 'react-bootstrap'
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 
 
@@ -14,7 +14,7 @@ class MyNavbar extends Component {
            
             <Navbar collapseOnSelect expand="lg" className="topnav">
                 <Container>
-                    {/* <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand> */}
+                    <Navbar.Brand>Peter's Site</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto" defaultActiveKey="/">
@@ -26,18 +26,13 @@ class MyNavbar extends Component {
                         <NavDropdown title="Tools" id="collasible-nav-dropdown">
                             {DropdownItems.map((item, index) => {
                                 return (
-                                    <NavDropdown.Item as={Link} to={item.link_to} className="dd_item" href="#action/3.2">{item.name}</NavDropdown.Item>
+                                    <NavDropdown.Item as={Link} to={item.link_to} className="dd_item">{item.name}</NavDropdown.Item>
                                 )
                             })}
                             
                         </NavDropdown>
                         </Nav>
-                        {/* <Nav>
-                        <Nav.Link href="#deets">More deets</Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
-                            Dank memes
-                        </Nav.Link>
-                        </Nav> */}
+                        
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

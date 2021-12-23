@@ -1,10 +1,19 @@
 import { useEffect, useState } from 'react'
+import React from 'react';
+import axios from 'axios'
 import './weatherWidget.css'
-import {Button} from 'react-bootstrap'
-
-const axios = require('axios').default;
+import { Spinner, Popover, OverlayTrigger } from 'react-bootstrap'
 
 // useState syntax: [ {current state}, {function to update current state} ] = useState({default state})
+
+const popover = (
+  <Popover id="popover-basic">
+    {/* <Popover.Header>Currency Exchange Widget</Popover.Header> */}
+    <Popover.Body>
+      This widget fetches weather data at given location from <a href='https://openweathermap.org/' target='_blank'>OpenWeather API</a>
+    </Popover.Body>
+  </Popover>
+);
 
 function TimeConverter(unix_time) {
   const array = ['day', 'date', 'month', 'year','time', 'tz']
@@ -85,8 +94,8 @@ const processTime = (unix_time) => {
 }
 
 
-function MyComponent() {
-  const [error, setError] = useState(null);
+function WeatherWidget() {
+  // const [error, setError] = useState(null);
   const [apiData, setData] = useState({});
   const [city, setCity] = useState("Sunnyvale")
   const [getCity, setGetCity] = useState()
@@ -103,20 +112,11 @@ function MyComponent() {
           setData(response);
         },
 
-        (error) => {
-          setError(error);
-        }
+        // (error) => {
+        //   setError(error);
+        // }
       )
   }, [apiUrl]);
-
-
-  const submitHandler = () => {
-    setCity(getCity);
-  }
-
-  const inputHandler = (event) => {
-    setGetCity(event.target.value);
-  }
 
   // if (error) {
   //   return <div>Error: {error.message}</div>;
@@ -124,11 +124,20 @@ function MyComponent() {
   {
   return (
     <div>
+      {/* <h2 className='h2-tools'>Weather Widget</h2> */}
+      <div className='widget-info'>
+            <h2 className='h2-tools'>Weather Widget</h2>
+            <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+                <button className='widget-i'></button>
+            </OverlayTrigger>
+        </div>
+      
       {apiData.data ? (
+        <div>
 
       <div className="weather-widget">
 
-        <article className="widget" id="weather_widget">
+        <article className="widget" id="weather_widget" >
           <div className="weatherIcon"> {getIcon(apiData.data.weather[0].main, apiData.data.dt + apiData.data.timezone)}</div>
           <div className="weatherInfo">
           <div className="temperature" id="temperature"><span>{Math.round(apiData.data.main.temp)}&deg;</span></div>
@@ -141,19 +150,28 @@ function MyComponent() {
           <div>{TimeConverter(apiData.data.dt + apiData.data.timezone)}</div>
         </article>
 
-        <div className="ww_user_input"> 
-          <input id="ww_user_input_city" type="text" placeholder="Enter city name" onChange={inputHandler} /> 
-          {/* <Button variant="outline-secondary">Submit</Button>{' '} */}
-          <button id="search_ww" onClick={submitHandler}></button>
-        </div> 
-      
-        </div>) : ( <h2 id='ww_loading'>Loading...</h2> )}
+        </div>
+
+        <div className='ww-user-input-container'>
+          <div className="ww_user_input"> 
+            {/* <input id="ww_user_input_city" type="text" placeholder="Enter city name" onChange={inputHandler} />  */}
+            <input id="ww_user_input_city" type="text" placeholder="Enter city name" onChange={(event) => {setGetCity(event.target.value)}} /> 
+            {/* <button id="search_ww" onClick={submitHandler}></button> */}
+            <button id="search_ww" onClick={() => setCity(getCity)}></button>
+
+          </div> 
+        </div>
+
+        </div>
+          
+        // ) : ( <h2 id='ww_loading'>Loading...</h2> )}
+        ) : ( <Spinner animation="border" id='ww-spinner'/> )}
     </div>
     );
   }
 }
 
-export default MyComponent;
+export default WeatherWidget;
 
 
 // for reference: https://reactjs.org/docs/faq-ajax.html 

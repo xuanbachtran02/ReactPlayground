@@ -5,7 +5,7 @@ export const DropdownItems = [
     },
     {
         name: 'Currency Exchange',
-        link_to: '/projects',
+        link_to: '/tools/currency_exchange',
     },
     {
         name: 'NBA Live Score',

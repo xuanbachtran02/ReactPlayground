@@ -233,3 +233,152 @@ export default Navbar;
  // Sat, 18 Dec 2021 17:05:54 GMT
 
  <input id="ww_user_input_city" type="text" placeholder="Enter city name" onChange={inputHandler} value={getCity} /> 
+
+
+  <h1>hello</h1>
+
+        <div>
+        {keys.forEach((key, index) => {
+        console.log(keys)
+        return(
+            <p>{(`${key}: ${currency_symbol[key].description}`)}</p>);
+        })}
+        </div>
+
+        {/* {Object.values(data).forEach(val => {
+                return(Options(val))}
+            )} */}
+
+  {/* <Dropdown.Item eventKey="1">Dropdown link</Dropdown.Item>
+        <Dropdown.Item eventKey="2">Dropdown link</Dropdown.Item> */}
+
+
+ // console.log(currency_symbol);
+
+    // let attributes = Object.keys(currency_symbol)
+
+    // console.log(attributes)
+
+    // for (let item in currency_symbol) {
+    //     console.log(currency_symbol[item].description)
+    //   }
+
+    // const yes = () => {
+    //     for (let item in currency_symbol) {
+    //         return <Dropdown.Item>{currency_symbol[item].description}</Dropdown.Item>
+    //     }
+    // }
+
+    // Object.values(data).forEach(val => console.log(val.description))
+
+
+    // keys.forEach((key, index) => {
+    //     console.log(`${key}: ${currency_symbol[key].description}`);
+    // })
+
+
+
+
+    // const output = currency_symbol.map(item => item.code);
+    // console.log(output);
+
+    //<p>{val.description}</p>
+
+
+    <InputGroup size="sm" className="mb-3">
+                {/* <InputGroup.Text id="inputGroup-sizing-sm">Small</InputGroup.Text> */}
+                <FormControl aria-label="Small" aria-describedby="inputGroup-sizing-sm" />
+            </InputGroup>
+
+   {/* <Dropdown.Item>{currency_symbol['AED'].description}</Dropdown.Item>   */}
+
+
+   InputGroup, FormControl
+
+   console.log("Amount: ", typeof(amount))
+        console.log(amount)
+        console.log("Rate: ", typeof(rate))
+
+    function UnitDropdown(props) {
+        return (
+            <div>
+                <div>{props.header}</div>
+          
+                <DropdownButton title={props.title}>
+                    <form>
+                        <label>
+                            Search: <input type="text" onChange={(event) => handleChange(event)}/>
+                        </label>
+                    </form>
+    
+                    {keys.map((key, index) => {
+                    if (props.filter === "" || keys[index].startsWith(props.filter))
+                    return(
+                        <Dropdown.Item onClick={() => setFrom(keys[index])}>{(`${keys[index]}: ${currency_symbol[keys[index]].description}`)}</Dropdown.Item>);
+                    })}
+    
+                </DropdownButton>
+            </div>
+        )
+    }
+
+    <UnitDropdown header='Base Currency:' title={from_unit} setFilter={(event) => setFilterFrom(event.target.value)} 
+                      filter={from_unit_filter} setUnit={(key) => setFrom(key)}/>
+
+
+// function UnitDropdown(props) {
+//     return (
+//         <div>
+//             <div>{props.header}</div>
+      
+//             <DropdownButton title={props.title}>
+//                 <form>
+//                     <label>
+//                         Search: <input type="text" onChange={props.setFilter}/>
+//                     </label>
+//                 </form>
+
+//                 {keys.map((key, index) => {
+//                 if (props.filter === "" || key.startsWith(props.filter))
+//                 return(
+//                     <Dropdown.Item onClick={handleClick}>{(`${key}: ${currency_symbol[key].description}`)}</Dropdown.Item>);
+//                 })}
+
+//             </DropdownButton>
+//         </div>
+//     )
+// }
+
+
+{/* <Button variant="outline-secondary">Submit</Button>{' '} */}
+
+/* Scroll 1 */
+.sc1::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.sc1::-webkit-scrollbar-track {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+.sc1::-webkit-scrollbar-thumb {
+  background-color: #dfdfdf;
+  border-radius: 10px;
+}
+
+
+
+{/* <Nav>
+                        <Nav.Link href="#deets">More deets</Nav.Link>
+                        <Nav.Link eventKey={2} href="#memes">
+                            Dank memes
+                        </Nav.Link>
+                        </Nav> */}
+
+
+          {/* <figure className='tobar_video'>
+          <iframe width="512" height="288" src="https://www.youtube.com/embed/BzUhNJMb7Hg" title="YouTube video player" 
+          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen="allowfullscreen"></iframe>
+
+          </figure> */}

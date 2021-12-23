@@ -10,9 +10,5 @@ export const MenuItems = [
     {
         section: 'Interest',
         link_to: '/interest',
-    },
-    // {
-    //     section: 'Tools',
-    //     link_to: '/tools',
-    // }
+    }
 ]
