@@ -5,7 +5,6 @@ import './currencyExchange.css'
 import { DropdownButton, Dropdown, Popover, OverlayTrigger, Button } from 'react-bootstrap'
 import currency_symbol from './currency_symbols.json'
 import filterIcon from './curEx-icon/filter-icon.svg'
-import iLetter from './curEx-icon/i-letter.svg'
 
 const keys = Object.keys(currency_symbol);
 
