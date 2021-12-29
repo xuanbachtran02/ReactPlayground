@@ -8,13 +8,12 @@ import { Link } from 'react-router-dom';
 
 
 class MyNavbar extends Component {
-    // state = {clicked: false}
     render() {
         return(
            
             <Navbar collapseOnSelect expand="lg" className="topnav">
                 <Container>
-                    <Navbar.Brand>Peter's Site</Navbar.Brand>
+                    <Navbar.Brand>Peter Tran</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto" defaultActiveKey="/">

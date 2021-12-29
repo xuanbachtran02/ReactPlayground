@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import React from 'react'
 import axios from 'axios'
 import './currencyExchange.css'
-import { DropdownButton, Dropdown, Popover, OverlayTrigger, Button } from 'react-bootstrap'
+import { Button, Dropdown, Popover, OverlayTrigger, ButtonGroup, InputGroup, FormControl } from 'react-bootstrap'
 import currency_symbol from './currency_symbols.json'
 import filterIcon from './curEx-icon/filter-icon.svg'
 
@@ -25,6 +25,7 @@ const CurrencyExchangeWidget = () => {
     const [amount, setAmount] = useState()
     const [res, setRes] = useState("")
     const [rate, setRate] = useState()
+    const [init_val, setInit] = useState("")
 
     const apiUrl = `https://api.exchangerate.host/convert?from=${from_unit}&to=${to_unit}`
 
@@ -47,28 +48,34 @@ const CurrencyExchangeWidget = () => {
             </OverlayTrigger>
         </div>
 
-        <div className='dropdown-group'>
+        <div className='ce-dropdown-group'>
 
             <div className='ce-dropdown-from'>
 
                 <div>Base currency:</div>
-                <DropdownButton title={from_unit} variant="outline-secondary" >
-                    <form className='search-bar-ce'>
-                    <img src={filterIcon} height='30px' width='30px' className='filter-icon'/>
-                        <label>
-                            <input type="text" onChange={(event) => {setFilterFrom(event.target.value.toUpperCase())}} className='input-search-bar-ce' />
-                        </label>
-                    </form>
+                <Dropdown as={ButtonGroup}>
+                <Dropdown.Toggle variant="outline-secondary" className="ce-dropdown-custom-1">{from_unit}</Dropdown.Toggle>
+                <Dropdown.Menu className="ce-dropdown-menu">  
+                    <div className='ce-search-bar-group'> 
+                    <Dropdown.Divider/>
+                        <form className='search-bar-ce'>
+                        <img src={filterIcon} height='30px' width='30px' className='filter-icon'/>
+                            <label>
+                                <input type="text" onChange={(event) => {setFilterFrom(event.target.value.toUpperCase())}} className='input-search-bar-ce' />
+                            </label>
+                        </form>
 
                     <Dropdown.Divider/>
+
+                    </div>
 
                     {keys.map((key, index) => {
                     if (from_unit_filter === "" || key.startsWith(from_unit_filter) || currency_symbol[key].description.toUpperCase().includes(from_unit_filter))
                     return(
-                        <Dropdown.Item onClick={() => setFrom(key)}>{(`${key}  (${currency_symbol[key].description})`)}</Dropdown.Item>);
+                        <Dropdown.Item onClick={() => setFrom(key)} className='ce-dropdown-item'>{(`${key}  (${currency_symbol[key].description})`)}</Dropdown.Item>);
                     })}
-
-                </DropdownButton>
+                </Dropdown.Menu>
+                </Dropdown>
 
             </div>
 
@@ -77,16 +84,20 @@ const CurrencyExchangeWidget = () => {
             <div className='ce-dropdown-to'>
 
                 <div>Target currency:</div>
+                <Dropdown as={ButtonGroup}>
+                <Dropdown.Toggle variant="outline-secondary" className="ce-dropdown-custom-2">{to_unit}</Dropdown.Toggle>
+                <Dropdown.Menu className="ce-dropdown-menu">
+                    <div className='ce-search-bar-group'> 
+                        <Dropdown.Divider/>
+                        <form className='search-bar-ce'>
+                            <img src={filterIcon} height='30px' width='30px' className='filter-icon'/>
+                            <label>
+                            <input type="text" onChange={(event) => {setFilterTo(event.target.value.toUpperCase())}} className='input-search-bar-ce'/>
+                            </label>
+                        </form>
 
-                <DropdownButton title={to_unit} variant="outline-secondary">
-                    <form className='search-bar-ce'>
-                        <img src={filterIcon} height='30px' width='30px' className='filter-icon'/>
-                        <label>
-                        <input type="text" onChange={(event) => {setFilterTo(event.target.value.toUpperCase())}} className='input-search-bar-ce'/>
-                        </label>
-                    </form>
-
-                    <Dropdown.Divider/>
+                        <Dropdown.Divider/>
+                    </div>
 
                     { keys.map((key, index) => {
                     if (to_unit_filter === "" || key.startsWith(to_unit_filter) || currency_symbol[key].description.toUpperCase().includes(to_unit_filter))
@@ -94,22 +105,36 @@ const CurrencyExchangeWidget = () => {
                         <Dropdown.Item onClick={() => setTo(key)}>{(`${key}  (${currency_symbol[key].description})`)}</Dropdown.Item>);
                     })}
 
-                </DropdownButton>
+
+                </Dropdown.Menu>
+                </Dropdown>
             </div>
+        </div>
+        <br />
+
+        <div className='ce-input-box-group'> 
+        <InputGroup onChange={(event) => setAmount(parseFloat(event.target.value))} className='ce-input-box'>
+            <FormControl id='ce-form-control'
+            placeholder="Enter amount"/>
+            <InputGroup.Text >{from_unit}</InputGroup.Text>
+        </InputGroup>
+
+        <div className='ce-button-group'>
+        <Button variant="outline-secondary" className='ce-button-convert' onClick={() => {
+            isNaN(amount) ? setRes("Please enter a numeric value") : setRes((amount * rate).toLocaleString('en-US', { maximumFractionDigits: 2 }))
+        }}>Convert</Button>
+
+        <Button variant="outline-secondary" className='ce-button-clear' onClick={() => {
+            setRes(''); document.getElementById('ce-form-control').value = ''
+        }}>Clear</Button>
 
         </div>
 
-        <br />
+          <InputGroup className='ce-input-box'>
+            <FormControl disabled={true} value={res}/>
+            <InputGroup.Text >{to_unit}</InputGroup.Text>
+        </InputGroup>
 
-        <div> 
-          <input type="text/value" placeholder=" Enter amount" onChange={(event) => setAmount(parseFloat(event.target.value))} className='input-box'/> 
-          <button onClick={() => {
-            isNaN(amount) ? setRes(" Please enter a numeric value") : setRes((amount * rate).toLocaleString('en-US', { maximumFractionDigits: 2 }) + " " + to_unit)
-              }}>Enter</button> 
-          
-          <br /> <br />
-
-          Converted amount: <input disabled={true} value={res} className='input-box'/>
         </div> 
     </div>
 

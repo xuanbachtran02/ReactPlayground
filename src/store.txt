@@ -382,3 +382,66 @@ export default Navbar;
           allowfullscreen="allowfullscreen"></iframe>
 
           </figure> */}
+
+
+ {/* <article>
+      <figure className='tobar_video'>
+          <iframe width="512" height="288" src="https://www.youtube.com/embed/BzUhNJMb7Hg" title="YouTube video player" 
+          frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen="allowfullscreen"></iframe>
+
+          </figure>
+
+          <h2 id="mg_h2">About us</h2>
+
+          <p className="our_story">"It was in high school when I found them, a group of friends that everyone 
+          wishes they had, though not all do. Together, we went through one of the most precious and beautiful
+          period in one's lifetime. We laughed, we cried, we fought, we made up, we did them all. No matter what we 
+          dealt with, we always had one another. Fastforward to high school graduation, and then future aspirations 
+          separate our path. Now our distances are calculated by thousands miles, but we all know we are never apart, 
+          as long as we always think about each another"</p>
+
+      </article>
+
+ <button onClick={() => {
+            isNaN(amount) ? setRes("Please enter a numeric value") : setRes((amount * rate).toLocaleString('en-US', { maximumFractionDigits: 2 }) + " " + to_unit)
+              }}>Convert</button> 
+
+    <button onClick={() => {
+              setRes('');
+              document.getElementById('ce-form-control').value = ''
+              }}>Clear</button> 
+
+#mg_h2 {
+  text-indent: 50px;
+}
+
+.tobar_video {
+  float: right;
+  max-width: 100%;
+  margin-left: 30px;
+  margin-top: 48px;
+}
+
+.our_story {
+  /* font-size: 20px;
+  text-indent: 20px;
+  padding: 0 10px 10px 10px;
+  margin: 30px;
+  font-size: 20px; */
+  max-width: 600px;
+  text-align: center;
+  font-style: italic;
+  margin: 20px;
+  padding: 20px;
+  font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+  font-size: 17px;
+  line-height: 1.75;
+  color: #000000;
+  border-left: 4px solid #000000;
+  border-top-left-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-right: 4px solid #000000;
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+}
