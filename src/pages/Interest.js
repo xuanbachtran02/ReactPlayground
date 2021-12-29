@@ -6,9 +6,6 @@ const Interest = () => {
     <div>
       <h1>Interest</h1>
     </div>
-
-
-
   );
 };
   

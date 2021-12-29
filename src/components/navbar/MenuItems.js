@@ -1,7 +1,7 @@
 export const MenuItems = [
     {
         section: 'Home',
-        link_to: '/',
+        link_to: '/home',
     },
     {
         section: 'Projects',
