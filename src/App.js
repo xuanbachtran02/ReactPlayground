@@ -12,10 +12,10 @@ function App() {
     <Router>
       <MyNavbar/>
       <Routes>
-       <Route exact path="/home" element={<Home/>}/>
-       <Route path='/interest' element={<Interest/>} />
-       <Route path='/tools/weather_widget' element={<WeatherWidget/>}></Route>
-       <Route path='/tools/currency_exchange' element={<CurrencyExchangeWidget/>}> </Route>
+       <Route exact path="/ReactPlayground" element={<Home/>}/>
+       <Route path='/ReactPlayground/interest' element={<Interest/>} />
+       <Route path='/ReactPlayground/tools/weather_widget' element={<WeatherWidget/>}></Route>
+       <Route path='/ReactPlayground/tools/currency_exchange' element={<CurrencyExchangeWidget/>}> </Route>
        </Routes>
     </Router>
   );

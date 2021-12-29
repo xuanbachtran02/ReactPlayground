@@ -1,11 +1,11 @@
 export const DropdownItems = [
     {
         name: 'Weather Widget',
-        link_to: '/tools/weather_widget',
+        link_to: '/ReactPlayground/tools/weather_widget',
     },
     {
         name: 'Currency Exchange',
-        link_to: '/tools/currency_exchange',
+        link_to: '/ReactPlayground/tools/currency_exchange',
     },
     // {
     //     name: 'Sports News',
