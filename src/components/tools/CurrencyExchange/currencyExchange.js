@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import React from 'react'
 import axios from 'axios'
+import { useApi } from'../utils'
 import './currencyExchange.css'
 import { Button, Dropdown, Popover, OverlayTrigger, ButtonGroup, InputGroup, FormControl, Spinner } from 'react-bootstrap'
 import CurrencyExChart from './currencyExchangeChart'
@@ -9,11 +10,26 @@ import filterIcon from './curEx-icon/filter-icon.svg'
 const popover = (
     <Popover id="popover-basic">
       <Popover.Body>
-        This widget fetches the latest exchange rate for given currencies from API provided by 
-        <a href='https://exchangerate.host/#/' target='_blank'>exchangerate.host</a>
+        This widget fetches the latest exchange rate for given currencies from API provided 
+        by <a href='https://exchangerate.host/#/' target='_blank'>exchangerate.host</a>
       </Popover.Body>
     </Popover>
   );
+
+const CurExWidgetInfo = () => {
+    return (
+        <div className='widget-info'>
+            <h2 className='h2-tools'>Currency Exchange</h2>
+            <OverlayTrigger trigger="click" placement="right" overlay={popover}>
+                <button className='widget-i'></button>
+            </OverlayTrigger>
+        </div>
+    )
+}
+
+const LoadingAnimation = () => {
+    return(<Spinner animation="border" id='ww-spinner'/>)
+}
 
 const getChartData = (from_unit, to_unit, rate) => {
     let year_rate
@@ -33,20 +49,15 @@ const getChartData = (from_unit, to_unit, rate) => {
 
     axios.get(timeSeriesUrl).then((response) => { year_rate = response.rates })
 
-    
-
 }
 
 const CurrencyExchangeWidget = () => {
-    const [error, setError] = useState(null);
-
-    const [countryList, setCountryList] = useState({})
-    const [keys, setKey] = useState(new Map());
+    let countryList
+    let keys
+    let rate
 
     const [from_unit, setFrom] = useState("VND");
     const [to_unit, setTo] = useState("USD")
-
-    const [rate, setRate] = useState()
 
     const [from_unit_filter, setFilterFrom] = useState("")
     const [to_unit_filter, setFilterTo] = useState("")
@@ -55,43 +66,30 @@ const CurrencyExchangeWidget = () => {
     const [res, setRes] = useState("")
 
     const symbolUrl = 'https://api.exchangerate.host/symbols'
-    const apiUrl = `https://api.exchangerate.host/convert?from=${from_unit}&to=${to_unit}`
-    
-    useEffect(() => {
-        axios.get(symbolUrl)
-            .then(
-                (response) => {
-                    setCountryList(response.data.symbols)
-                    setKey(Object.keys(response.data.symbols))
-                },
-                (error) => {
-                    setError(error);
-                  }
-            )
-    }, [])
+    const rateUrl = `https://api.exchangerate.host/convert?from=${from_unit}&to=${to_unit}`
 
-    useEffect(() => {
-        axios.get(apiUrl)
-          .then(
-            (response) => {
-              setRate(response.data.info.rate)
-            },
-            (error) => {
-                setError(error);
-              }
-          )
-      }, [from_unit, to_unit]);
+    const [listData,  listError, listLoading] = useApi(symbolUrl)
+    const [rateData, rateError, rateLoading] = useApi(rateUrl)
+
+    // console.log(listLoading)
+    // console.log(listData)
+    
+    if (listLoading) return <LoadingAnimation/>
+     // TODO: else if (listError || !listData) setError(listError)
+
+    countryList = listData.symbols
+    keys = Object.keys(countryList)
+
+    if (rateLoading) return <LoadingAnimation/>
+
+    rate = rateData.info.rate
 
     return (
     <div>
-        <div className='widget-info'>
-            <h2 className='h2-tools'>Currency Exchange</h2>
-            <OverlayTrigger trigger="click" placement="right" overlay={popover}>
-                <button className='widget-i'></button>
-            </OverlayTrigger>
-        </div>
+        <CurExWidgetInfo/>
 
-        {countryList && keys && rate && !error ? (
+        {/* {countryList && keys && rate && !error ? ( */}
+        {countryList && keys && rate ? (
         <div>
  
         <div className='ce-dropdown-group'>
@@ -189,7 +187,7 @@ const CurrencyExchangeWidget = () => {
 
         </div>
 
-        ) : (<Spinner animation="border" id='ww-spinner'/> )
+        ) : (<LoadingAnimation/> )
     }
 
     </div>

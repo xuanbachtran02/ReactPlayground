@@ -447,3 +447,46 @@ export default Navbar;
 }
 
 {/* <Popover.Header>Currency Exchange Widget</Popover.Header> */}
+
+
+    // useEffect(() => {
+    //     axios.get(symbolUrl)
+    //         .then(
+    //             (response) => {
+    //                 setCountryList(response.data.symbols)
+    //                 setKey(Object.keys(response.data.symbols))
+    //             },
+    //             (error) => {
+    //                 setError(error);
+    //             }, 
+    //         )
+    //         .finally(() => {
+    //             setLoadingList(false)
+    //             console.log(countryList)
+    //         });
+    // }, [])
+
+    // useEffect(() => {
+    //     axios.get(apiUrl)
+    //       .then(
+    //         (response) => {
+    //           setRate(response.data.info.rate)
+    //         },
+    //         (error) => {
+    //             setError(error);
+    //           }
+    //       )
+    //       .finally(() => {
+    //           setLoadingRate(false);
+    //           console.log(rate)
+    //       })
+    //   }, [from_unit, to_unit]);
+
+    // const [error, setError] = useState(null);
+    // const [loadingList, setLoadingList] = useState(true);
+    // const [loadingRate, setLoadingRate] = useState(true)
+
+    // const [countryList, setCountryList] = useState({})
+    // const [keys, setKey] = useState(new Map());
+
+    // const [rate, setRate] = useState()
