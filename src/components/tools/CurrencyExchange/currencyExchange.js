@@ -74,24 +74,18 @@ const CurrencyExchangeWidget = () => {
     // console.log(listLoading)
     // console.log(listData)
     
-    if (listLoading) return <LoadingAnimation/>
-     // TODO: else if (listError || !listData) setError(listError)
+    if (listLoading || rateLoading || listError || rateError || !listData || !rateData) 
+    return <LoadingAnimation/>
 
     countryList = listData.symbols
     keys = Object.keys(countryList)
-
-    if (rateLoading) return <LoadingAnimation/>
-
     rate = rateData.info.rate
 
     return (
     <div>
         <CurExWidgetInfo/>
 
-        {/* {countryList && keys && rate && !error ? ( */}
-        {countryList && keys && rate ? (
         <div>
- 
         <div className='ce-dropdown-group'>
 
             <div className='ce-dropdown-from'>
@@ -105,7 +99,8 @@ const CurrencyExchangeWidget = () => {
                         <form className='search-bar-ce'>
                         <img src={filterIcon} height='30px' width='30px' className='filter-icon'/>
                             <label>
-                                <input type="text" onChange={(event) => {setFilterFrom(event.target.value.toUpperCase())}} className='input-search-bar-ce' />
+                                <input type="text" onChange={(event) => {setFilterFrom(event.target.value.toUpperCase())}} className='input-search-bar-ce' 
+                                id='ce-filter-from'/>
                             </label>
                         </form>
 
@@ -136,7 +131,7 @@ const CurrencyExchangeWidget = () => {
                         <form className='search-bar-ce'>
                             <img src={filterIcon} height='30px' width='30px' className='filter-icon'/>
                             <label>
-                            <input type="text" onChange={(event) => {setFilterTo(event.target.value.toUpperCase())}} className='input-search-bar-ce'/>
+                            <input type="text" onChange={(event) => {setFilterTo(event.target.value.toUpperCase())}} className='input-search-bar-ce' id='ce-filter-to'/>
                             </label>
                         </form>
 
@@ -148,8 +143,7 @@ const CurrencyExchangeWidget = () => {
                     return(
                         <Dropdown.Item onClick={() => {setTo(key)}}>{(`${key}  (${countryList[key].description})`)}</Dropdown.Item>);
                     })}
-
-
+                    
                 </Dropdown.Menu>
                 </Dropdown>
             </div>
@@ -171,7 +165,12 @@ const CurrencyExchangeWidget = () => {
         }}>Convert</Button>
 
         <Button variant="outline-secondary" className='ce-button-clear' onClick={() => {
-            setRes(''); document.getElementById('ce-form-control').value = ''
+            setRes(''); setFilterFrom(''); setFilterTo('')
+            const ce_clear_id = ['ce-form-control', 'ce-filter-from', 'ce-filter-to']
+            for(let i in ce_clear_id){
+                if (document.getElementById(ce_clear_id[i]))
+                    document.getElementById(ce_clear_id[i]).value = ''
+                }
         }}>Clear</Button>
 
         </div>
@@ -186,9 +185,6 @@ const CurrencyExchangeWidget = () => {
         <CurrencyExChart/>
 
         </div>
-
-        ) : (<LoadingAnimation/> )
-    }
 
     </div>
 
