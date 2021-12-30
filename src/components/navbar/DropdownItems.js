@@ -7,8 +7,4 @@ export const DropdownItems = [
         name: 'Currency Exchange',
         link_to: '/ReactPlayground/tools/currency_exchange',
     },
-    // {
-    //     name: 'Sports News',
-    //     link_to: '/interest',
-    // }
 ]

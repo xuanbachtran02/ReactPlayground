@@ -4,8 +4,6 @@ import axios from 'axios'
 import './weatherWidget.css'
 import { Spinner, Popover, OverlayTrigger } from 'react-bootstrap'
 
-// useState syntax: [ {current state}, {function to update current state} ] = useState({default state})
-
 const popover = (
   <Popover id="popover-basic">
     {/* <Popover.Header>Currency Exchange Widget</Popover.Header> */}
@@ -23,16 +21,16 @@ function TimeConverter(unix_time) {
   const dlist = datestr.split(" ").map(item => item.replace(",", " ").trim(" "));
 
   dlist.map((item, index) => time_map[array[index]] = item);
-
-  return time_map;
+  return [time_map, datestr];
 }
 
-const getIcon = (main, unix_time) => {
-  const time_map = TimeConverter(unix_time)
+const getIcon = (main, clouds, unix_time) => {
+  const [time_map, datestr] = TimeConverter(unix_time)
   const hour = (time_map['time']).substring(0, 2)
   
   var isDay = (hour >= 6 && hour < 18)? true : false
   let src = './weather-icon/'
+  let isCloudy = (clouds >= 80) ? "" : "partly-cloudy-"
   const arr = ["Rain", "Snow", "Fog", "Clouds", "Clear"]
 
   switch(main){
@@ -41,9 +39,9 @@ const getIcon = (main, unix_time) => {
     case 'Drizzle':
       src += 'drizzle'; break
     case 'Rain':
-      src += 'partly-cloudy-rain'; break
+      src += isCloudy + 'rain'; break
     case 'Snow':
-      src += 'partly-cloudy-snow'; break
+      src += isCloudy + 'snow'; break
     case 'Haze':
       src += 'haze'; break;
     case 'Mist':
@@ -57,14 +55,14 @@ const getIcon = (main, unix_time) => {
     case 'Tornado':
       src += 'tornado'; break;
     case 'Clouds':
-      src += 'partly-cloudy'; break;
+      src += (isCloudy)? 'partly-cloudy' : 'overcast'; break;
     case 'Clear':
       src += 'clear'; break;
     default: 
       src += 'not-available'; break;
   }
 
-  if (arr.includes(main)){
+  if (arr.includes(main) && isCloudy){
     if (isDay === true) src += '-day';
     else src += '-night';
   }
@@ -76,7 +74,7 @@ const getIcon = (main, unix_time) => {
 
 const processTime = (unix_time) => {
 
-  const timeMap = TimeConverter(unix_time)
+  const [timeMap, datestr] = TimeConverter(unix_time)
   const date = timeMap['date']
   const month = timeMap['month']
 
@@ -93,9 +91,20 @@ const processTime = (unix_time) => {
   return `${date}${get_th(date)} ${month}`
 }
 
+const getTime = (unix_time) => {
+  const month_convert = {"Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6,
+                          "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12}
+  const [time_map, datestr] = TimeConverter(unix_time)
+
+  const day_month = month_convert[time_map['month']] + '/' + time_map['date']
+  const hour_minute = (time_map['time']).substring(0, 5)
+
+  return day_month + ', ' + hour_minute
+}
+
 
 function WeatherWidget() {
-  // const [error, setError] = useState(null);
+  const [error, setError] = useState(null);
   const [apiData, setData] = useState({});
   const [city, setCity] = useState("Sunnyvale")
   const [getCity, setGetCity] = useState()
@@ -112,19 +121,14 @@ function WeatherWidget() {
           setData(response);
         },
 
-        // (error) => {
-        //   setError(error);
-        // }
+        (error) => {
+          setError(error);
+        }
       )
   }, [apiUrl]);
 
-  // if (error) {
-  //   return <div>Error: {error.message}</div>;
-  // } else 
-  {
   return (
     <div>
-      {/* <h2 className='h2-tools'>Weather Widget</h2> */}
       <div className='widget-info'>
             <h2 className='h2-tools'>Weather Widget</h2>
             <OverlayTrigger trigger="click" placement="right" overlay={popover}>
@@ -138,7 +142,7 @@ function WeatherWidget() {
       <div className="weather-widget">
 
         <article className="widget" id="weather_widget" >
-          <div className="weatherIcon"> {getIcon(apiData.data.weather[0].main, apiData.data.dt + apiData.data.timezone)}</div>
+          <div className="weatherIcon"> {getIcon(apiData.data.weather[0].main, apiData.data.clouds.all, apiData.data.dt + apiData.data.timezone)}</div>
           <div className="weatherInfo">
           <div className="temperature" id="temperature"><span>{Math.round(apiData.data.main.temp)}&deg;</span></div>
           <div className="description">    
@@ -147,28 +151,28 @@ function WeatherWidget() {
           </div>
           </div>
           <div className="date" id="date">{processTime(apiData.data.dt + apiData.data.timezone)}</div>
-          <div>{TimeConverter(apiData.data.dt + apiData.data.timezone)}</div>
+          <div className='ww-last-updated'>Last updated: {getTime(apiData.data.dt + apiData.data.timezone)} at destination</div>
         </article>
 
-        </div>
+      </div>
 
         <div className='ww-user-input-container'>
           <div className="ww_user_input"> 
-            {/* <input id="ww_user_input_city" type="text" placeholder="Enter city name" onChange={inputHandler} />  */}
             <input id="ww_user_input_city" type="text" placeholder="Enter city name" onChange={(event) => {setGetCity(event.target.value)}} /> 
-            {/* <button id="search_ww" onClick={submitHandler}></button> */}
-            <button id="search_ww" onClick={() => setCity(getCity)}></button>
+            <button id="search_ww" onClick={() => {
+              setCity(getCity)
+              setError(null)
+            }}></button>
 
           </div> 
         </div>
 
+        <div className='ww-error-message'>{error? error.message + "!": null}</div>
         </div>
           
-        // ) : ( <h2 id='ww_loading'>Loading...</h2> )}
         ) : ( <Spinner animation="border" id='ww-spinner'/> )}
     </div>
     );
-  }
 }
 
 export default WeatherWidget;

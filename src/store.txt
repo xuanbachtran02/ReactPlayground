@@ -445,3 +445,5 @@ export default Navbar;
   border-top-right-radius: 30px;
   border-bottom-right-radius: 30px;
 }
+
+{/* <Popover.Header>Currency Exchange Widget</Popover.Header> */}
