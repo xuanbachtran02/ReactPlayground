@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/ReactPlayground/static/css/main.107c360b.chunk.css",
-    "main.js": "/ReactPlayground/static/js/main.cdf3e44f.chunk.js",
-    "main.js.map": "/ReactPlayground/static/js/main.cdf3e44f.chunk.js.map",
+    "main.css": "/ReactPlayground/static/css/main.773f1df3.chunk.css",
+    "main.js": "/ReactPlayground/static/js/main.ebedf86c.chunk.js",
+    "main.js.map": "/ReactPlayground/static/js/main.ebedf86c.chunk.js.map",
     "runtime-main.js": "/ReactPlayground/static/js/runtime-main.6f9d3e98.js",
     "runtime-main.js.map": "/ReactPlayground/static/js/runtime-main.6f9d3e98.js.map",
     "static/css/2.a75f5a2c.chunk.css": "/ReactPlayground/static/css/2.a75f5a2c.chunk.css",
-    "static/js/2.147d2c1a.chunk.js": "/ReactPlayground/static/js/2.147d2c1a.chunk.js",
-    "static/js/2.147d2c1a.chunk.js.map": "/ReactPlayground/static/js/2.147d2c1a.chunk.js.map",
+    "static/js/2.9c461fd9.chunk.js": "/ReactPlayground/static/js/2.9c461fd9.chunk.js",
+    "static/js/2.9c461fd9.chunk.js.map": "/ReactPlayground/static/js/2.9c461fd9.chunk.js.map",
     "index.html": "/ReactPlayground/index.html",
     "static/css/2.a75f5a2c.chunk.css.map": "/ReactPlayground/static/css/2.a75f5a2c.chunk.css.map",
-    "static/css/main.107c360b.chunk.css.map": "/ReactPlayground/static/css/main.107c360b.chunk.css.map",
-    "static/js/2.147d2c1a.chunk.js.LICENSE.txt": "/ReactPlayground/static/js/2.147d2c1a.chunk.js.LICENSE.txt",
+    "static/css/main.773f1df3.chunk.css.map": "/ReactPlayground/static/css/main.773f1df3.chunk.css.map",
+    "static/js/2.9c461fd9.chunk.js.LICENSE.txt": "/ReactPlayground/static/js/2.9c461fd9.chunk.js.LICENSE.txt",
     "static/media/cat_pic.3c4923e0.png": "/ReactPlayground/static/media/cat_pic.3c4923e0.png",
     "static/media/clear-day.svg": "/ReactPlayground/static/media/clear-day.f1148f35.svg",
     "static/media/clear-night.svg": "/ReactPlayground/static/media/clear-night.35d2d7e8.svg",
@@ -28,14 +28,17 @@
     "static/media/instagram.819e504d.svg": "/ReactPlayground/static/media/instagram.819e504d.svg",
     "static/media/mist.svg": "/ReactPlayground/static/media/mist.3e5a9a8b.svg",
     "static/media/not-available.svg": "/ReactPlayground/static/media/not-available.b8b0bf1c.svg",
+    "static/media/overcast.svg": "/ReactPlayground/static/media/overcast.9c795617.svg",
     "static/media/partly-cloudy-day.svg": "/ReactPlayground/static/media/partly-cloudy-day.22af82f4.svg",
     "static/media/partly-cloudy-night.svg": "/ReactPlayground/static/media/partly-cloudy-night.7c7c3446.svg",
     "static/media/partly-cloudy-rain-day.svg": "/ReactPlayground/static/media/partly-cloudy-rain-day.674b01de.svg",
     "static/media/partly-cloudy-rain-night.svg": "/ReactPlayground/static/media/partly-cloudy-rain-night.dfa06420.svg",
     "static/media/partly-cloudy-snow-day.svg": "/ReactPlayground/static/media/partly-cloudy-snow-day.b0646e11.svg",
     "static/media/partly-cloudy-snow-night.svg": "/ReactPlayground/static/media/partly-cloudy-snow-night.751793f4.svg",
+    "static/media/rain.svg": "/ReactPlayground/static/media/rain.0dc8335e.svg",
     "static/media/search_icon.svg": "/ReactPlayground/static/media/search_icon.f7a26ab2.svg",
     "static/media/smoke.svg": "/ReactPlayground/static/media/smoke.f9892f56.svg",
+    "static/media/snow.svg": "/ReactPlayground/static/media/snow.528543ca.svg",
     "static/media/spotify.33c337b4.svg": "/ReactPlayground/static/media/spotify.33c337b4.svg",
     "static/media/thunderstorms-rain.svg": "/ReactPlayground/static/media/thunderstorms-rain.94cd24cf.svg",
     "static/media/tornado.svg": "/ReactPlayground/static/media/tornado.b6ebebd8.svg"
@@ -43,8 +46,8 @@
   "entrypoints": [
     "static/js/runtime-main.6f9d3e98.js",
     "static/css/2.a75f5a2c.chunk.css",
-    "static/js/2.147d2c1a.chunk.js",
-    "static/css/main.107c360b.chunk.css",
-    "static/js/main.cdf3e44f.chunk.js"
+    "static/js/2.9c461fd9.chunk.js",
+    "static/css/main.773f1df3.chunk.css",
+    "static/js/main.ebedf86c.chunk.js"
   ]
 }
