@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Spinner } from 'react-bootstrap'
 
 export function useApi(url) {
     const [data, setData] = useState(null)
@@ -29,3 +30,7 @@ export function useApi(url) {
   
     return [data, error, loading]
   }
+
+export function LoadingAnimation() {
+  return(<Spinner animation="border" id='ww-spinner'/>)
+}

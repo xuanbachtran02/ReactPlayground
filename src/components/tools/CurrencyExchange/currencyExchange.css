@@ -88,3 +88,10 @@ margin-left: 10%;
 .ce-button-clear {
   margin-left: 2%
 }
+
+.ce-linechart {
+  margin-top: 5%;
+  padding: 0 20px 0 20px;
+  display: flex;
+  justify-content: center;
+}

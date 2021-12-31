@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import React from 'react'
 import axios from 'axios'
-import { useApi } from'../utils'
+import { useApi, LoadingAnimation } from'../utils'
+import GetChartData from './currencyExchangeChart'
 import './currencyExchange.css'
 import { Button, Dropdown, Popover, OverlayTrigger, ButtonGroup, InputGroup, FormControl, Spinner } from 'react-bootstrap'
 import CurrencyExChart from './currencyExchangeChart'
@@ -27,30 +28,6 @@ const CurExWidgetInfo = () => {
     )
 }
 
-const LoadingAnimation = () => {
-    return(<Spinner animation="border" id='ww-spinner'/>)
-}
-
-const getChartData = (from_unit, to_unit, rate) => {
-    let year_rate
-    let larger = from_unit
-    let smaller = to_unit
-    let today = new Date();
-    let start_date = `${today.getFullYear() - 1}-${today.getMonth() + 1}-${today.getDate()}`
-    let end_date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
-
-    // https://api.exchangerate.host/timeseries?start_date=2020-12-29&end_date=2021-12-29&base=USD&symbols=VND
-
-    if (rate < 1) [smaller, larger] = [larger, smaller];
-
-    const timeSeriesUrl = `https://api.exchangerate.host/timeseries?start_date=${start_date}&end_date=${end_date}&base=${larger}&symbols=${smaller}`
-
-    console.log(timeSeriesUrl)
-
-    axios.get(timeSeriesUrl).then((response) => { year_rate = response.rates })
-
-}
-
 const CurrencyExchangeWidget = () => {
     let countryList
     let keys
@@ -70,9 +47,6 @@ const CurrencyExchangeWidget = () => {
 
     const [listData,  listError, listLoading] = useApi(symbolUrl)
     const [rateData, rateError, rateLoading] = useApi(rateUrl)
-
-    // console.log(listLoading)
-    // console.log(listData)
     
     if (listLoading || rateLoading || listError || rateError || !listData || !rateData) 
     return <LoadingAnimation/>
@@ -143,7 +117,7 @@ const CurrencyExchangeWidget = () => {
                     return(
                         <Dropdown.Item onClick={() => {setTo(key)}}>{(`${key}  (${countryList[key].description})`)}</Dropdown.Item>);
                     })}
-                    
+
                 </Dropdown.Menu>
                 </Dropdown>
             </div>
@@ -159,7 +133,6 @@ const CurrencyExchangeWidget = () => {
 
         <div className='ce-button-group'>
         <Button variant="outline-secondary" className='ce-button-convert' onClick={() => {
-            getChartData(from_unit, to_unit, rate)
             console.log(`Converting from ${from_unit} to ${to_unit} and the rate is ${rate}`)
             Number.isInteger(amount) ? setRes((amount * rate).toLocaleString('en-US', { maximumFractionDigits: 2 })) : setRes("Please enter a numeric value")
         }}>Convert</Button>
@@ -182,7 +155,7 @@ const CurrencyExchangeWidget = () => {
 
         </div> 
 
-        <CurrencyExChart/>
+        <CurrencyExChart unit_1={from_unit} unit_2={to_unit} rate={rate}/>
 
         </div>
 
