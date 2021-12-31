@@ -95,7 +95,8 @@ font-style: italic;
 font-size: 14px;
 display: flex;
 justify-content: center;
-transform: translate(150px)
+margin-left: 275px;
+/* transform: translate(150px) */
 }
 
 .ww-user-input-container {
