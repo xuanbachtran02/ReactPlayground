@@ -1,14 +1,14 @@
 export const MenuItems = [
     {
         section: 'Home',
-        link_to: '/ReactPlayground',
+        link_to: '/',
     },
     {
         section: 'Projects',
-        link_to: '/ReactPlayground/projects',
+        link_to: '/projects',
     },
     {
         section: 'Interest',
-        link_to: '/ReactPlayground/interest',
+        link_to: '/interest',
     }
 ]

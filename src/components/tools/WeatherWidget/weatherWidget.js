@@ -102,7 +102,6 @@ const getTime = (unix_time) => {
   return day_month + ', ' + hour_minute
 }
 
-
 function WeatherWidget() {
   const [error, setError] = useState(null);
   const [apiData, setData] = useState({});
@@ -151,10 +150,11 @@ function WeatherWidget() {
           </div>
           </div>
           <div className="date" id="date">{processTime(apiData.data.dt + apiData.data.timezone)}</div>
-          <div className='ww-last-updated'>Last updated: {getTime(apiData.data.dt + apiData.data.timezone)} at destination</div>
+          {/* <div className='ww-last-updated'>Last updated: {getTime(apiData.data.dt + apiData.data.timezone)} at destination</div> */}
         </article>
-
       </div>
+
+      <div className='ww-last-updated'>Last updated: {getTime(apiData.data.dt + apiData.data.timezone)} at destination</div>
 
         <div className='ww-user-input-container'>
           <div className="ww_user_input"> 

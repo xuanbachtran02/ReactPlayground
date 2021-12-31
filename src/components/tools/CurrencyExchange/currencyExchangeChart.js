@@ -60,7 +60,7 @@ const CurrencyExChart = (props) => {
 
   return(
       <div>
-          <Line data={chartData} options={option} className='ce-linechart' height="100px" />
+          <Line data={chartData} options={option} className='ce-linechart' height="125px" />
       </div>
   )
 }
