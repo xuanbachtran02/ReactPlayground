@@ -9,9 +9,9 @@ display: inline-block;
 
 .widget-i {
 background-image: url('./curEx-icon/i-letter.svg');
-background-color: white;
-width: 17px;
-height: 17px;
+background-color: transparent;
+width: 14px;
+height: 14px;
 border: none;
 display: inline-block;
 margin-left: 5px;

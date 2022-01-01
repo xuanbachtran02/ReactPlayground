@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import React from 'react';
 import axios from 'axios'
-import { monthNameToNum } from '../utils'
+import { monthNameToNumStr } from '../utils'
 import './weatherWidget.css'
 import { Spinner, Popover, OverlayTrigger } from 'react-bootstrap'
 
@@ -90,15 +90,13 @@ const processTime = (unix_time) => {
       }
   }
 
-  if (date[0] == '0') date = date[1];
-
-  return `${date}${get_th(date)} ${month}`
+  return `${parseInt(date)}${get_th(date)} ${month}`
 }
 
 const getTime = (unix_time) => {
   const [time_map, datestr] = TimeConverter(unix_time)
 
-  const day_month = monthNameToNum[time_map['month']] + '/' + time_map['date']
+  const day_month = parseInt(monthNameToNumStr[time_map['month']]) + '/' + parseInt(time_map['date'])
   const hour_minute = (time_map['time']).substring(0, 5)
 
   return day_month + ', ' + hour_minute
