@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import React from 'react';
 import axios from 'axios'
+import { monthNameToNum } from '../utils'
 import './weatherWidget.css'
 import { Spinner, Popover, OverlayTrigger } from 'react-bootstrap'
 
@@ -21,6 +22,7 @@ function TimeConverter(unix_time) {
   const dlist = datestr.split(" ").map(item => item.replace(",", " ").trim(" "));
 
   dlist.map((item, index) => time_map[array[index]] = item);
+  
   return [time_map, datestr];
 }
 
@@ -75,8 +77,8 @@ const getIcon = (main, clouds, unix_time) => {
 const processTime = (unix_time) => {
 
   const [timeMap, datestr] = TimeConverter(unix_time)
-  const date = timeMap['date']
-  const month = timeMap['month']
+  let date = timeMap['date']
+  let month = timeMap['month']
 
   const get_th = (date) => {
     if (date > 3 && date < 21) return 'th';
@@ -86,17 +88,17 @@ const processTime = (unix_time) => {
           case 3:  return "rd";
           default: return "th";
       }
-  } 
+  }
+
+  if (date[0] == '0') date = date[1];
 
   return `${date}${get_th(date)} ${month}`
 }
 
 const getTime = (unix_time) => {
-  const month_convert = {"Jan": 1, "Feb": 2, "Mar": 3, "Apr": 4, "May": 5, "Jun": 6,
-                          "Jul": 7, "Aug": 8, "Sep": 9, "Oct": 10, "Nov": 11, "Dec": 12}
   const [time_map, datestr] = TimeConverter(unix_time)
 
-  const day_month = month_convert[time_map['month']] + '/' + time_map['date']
+  const day_month = monthNameToNum[time_map['month']] + '/' + time_map['date']
   const hour_minute = (time_map['time']).substring(0, 5)
 
   return day_month + ', ' + hour_minute

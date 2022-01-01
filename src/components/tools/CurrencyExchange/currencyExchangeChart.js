@@ -1,14 +1,14 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 import Chart from 'chart.js/auto';
-import { useApi, LoadingAnimation } from '../utils'
+import { useApi, LoadingAnimation, monthNumtoName, monthNameToNumStr } from '../utils'
 
 const CurrencyExChart = (props) => {
   let larger = props.unit_1
   let smaller = props.unit_2
-  let today = new Date();
-  let start_date = `${today.getFullYear() - 1}-${today.getMonth() + 1}-${today.getDate()}`
-  let end_date = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`
+  let datelist = ((new Date()).toString()).split(" ");
+  let start_date = `${datelist[3] - 1}-${monthNameToNumStr[datelist[1]]}-${datelist[2]}`
+  let end_date = `${datelist[3]}-${monthNameToNumStr[datelist[1]]}-${datelist[2]}`
 
   if (props.rate < 1) [smaller, larger] = [larger, smaller];
 
@@ -18,8 +18,6 @@ const CurrencyExChart = (props) => {
   if (yearRateError || yearRateLoading || !yearRateData) 
   return <LoadingAnimation/>
 
-  const month_convert = {"01": "Jan", "02": "Feb", "03": "Mar", "04": "Apr", "05": "May", "06": "Jun",
-                        "07":"Jul", "08": "Aug", "09": "Sep", "10": "Oct", "11": "Nov", "12": "Dec"}
   let yearRate = yearRateData.rates
   let dates = Object.keys(yearRate)
   let labels = []
@@ -27,7 +25,7 @@ const CurrencyExChart = (props) => {
 
   dates.map((date, index) => {
   if (date.substring(8, 10) == '01'){
-      labels.push(`${month_convert[date.substring(5, 7)]} ${date.substring(2, 4)}`)
+      labels.push(`${monthNumtoName[date.substring(5, 7)]} ${date.substring(2, 4)}`)
       data.push(yearRate[date][smaller])
   }
   })
@@ -55,11 +53,11 @@ const CurrencyExChart = (props) => {
           text: `${larger} IN ${smaller} CHART`
         }
       },
-    responsive: true
+    responsive: true,
   }
 
   return(
-      <div>
+      <div class="ce-chart-container">
           <Line data={chartData} options={option} className='ce-linechart' height="125px" />
       </div>
   )
@@ -67,5 +65,4 @@ const CurrencyExChart = (props) => {
 
 export default CurrencyExChart
 
-  
   
