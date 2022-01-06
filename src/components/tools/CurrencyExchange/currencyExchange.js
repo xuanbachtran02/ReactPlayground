@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react'
 import React from 'react'
-import axios from 'axios'
 import { useApi, LoadingAnimation } from'../utils'
-import GetChartData from './currencyExchangeChart'
 import './currencyExchange.css'
 import { Button, Dropdown, Popover, OverlayTrigger, ButtonGroup, InputGroup, FormControl, Spinner } from 'react-bootstrap'
 import CurrencyExChart from './currencyExchangeChart'
