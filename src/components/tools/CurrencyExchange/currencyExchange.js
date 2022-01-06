@@ -59,7 +59,7 @@ const CurrencyExchangeWidget = () => {
     <div>
         <CurExWidgetInfo/>
 
-        <div>
+        <div className="ce-container">
         <div className='ce-dropdown-group'>
 
             <div className='ce-dropdown-from'>
@@ -152,6 +152,7 @@ const CurrencyExchangeWidget = () => {
             <FormControl disabled={true} value={res}/>
             <InputGroup.Text >{to_unit}</InputGroup.Text>
         </InputGroup>
+
 
         </div> 
 
