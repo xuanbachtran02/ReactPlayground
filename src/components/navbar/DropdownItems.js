@@ -7,4 +7,8 @@ export const DropdownItems = [
         name: 'Currency Exchange',
         link_to: '/tools/currency_exchange',
     },
+    {
+        name: 'DASG Documents',
+        link_to: '/tools/dasg_documents'
+    }
 ]

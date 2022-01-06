@@ -90,7 +90,7 @@ const processTime = (unix_time) => {
       }
   }
 
-  return `${parseInt(date)}${get_th(date)} ${month}`
+  return `${month} ${parseInt(date)}${get_th(date)}`
 }
 
 const getTime = (unix_time) => {
