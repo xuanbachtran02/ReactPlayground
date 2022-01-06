@@ -86,12 +86,8 @@ margin-left: 10%;
   border-radius: 14px;
 }
 
-.ce-dropdown-custom-1 {
-  width: 123px;
-}
-
-.ce-dropdown-custom-2{
-  width: 140px;
+.ce-dropdown-custom{
+  width: 105px;
 }
 
 .ce-button-convert {

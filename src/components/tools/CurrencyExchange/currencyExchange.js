@@ -60,13 +60,13 @@ const CurrencyExchangeWidget = () => {
         <CurExWidgetInfo/>
 
         <div className="ce-container">
-        <div className='ce-dropdown-group'>
 
-            <div className='ce-dropdown-from'>
-
-                <div>Base currency:</div>
-                <Dropdown as={ButtonGroup}>
-                <Dropdown.Toggle variant="outline-secondary" className="ce-dropdown-custom-1">{from_unit}</Dropdown.Toggle>
+        <div className='ce-input-box-group'> 
+        <InputGroup onChange={(event) => setAmount(parseFloat(event.target.value))} className='ce-input-box'>
+            <FormControl id='ce-form-control'
+            placeholder="Enter amount"/>
+            <Dropdown as={ButtonGroup}>
+                <Dropdown.Toggle variant="outline-secondary" className="ce-dropdown-custom">{from_unit}</Dropdown.Toggle>
                 <Dropdown.Menu className="ce-dropdown-menu">  
                     <div className='ce-search-bar-group'> 
                     <Dropdown.Divider/>
@@ -89,16 +89,29 @@ const CurrencyExchangeWidget = () => {
                     })}
                 </Dropdown.Menu>
                 </Dropdown>
+        </InputGroup>
 
-            </div>
+        <div className='ce-button-group'>
+        <Button variant="outline-dark" className='ce-button-convert' onClick={() => {
+            console.log(`Converting from ${from_unit} to ${to_unit} and the rate is ${rate}`)
+            Number.isInteger(amount) ? setRes((amount * rate).toLocaleString('en-US', { maximumFractionDigits: 2 })) : setRes("Please enter a numeric value")
+        }}>Convert</Button>
 
-        <br/>
+        <Button variant="outline-dark" className='ce-button-clear' onClick={() => {
+            setRes(''); setFilterFrom(''); setFilterTo('')
+            const ce_clear_id = ['ce-form-control', 'ce-filter-from', 'ce-filter-to']
+            for(let i in ce_clear_id){
+                if (document.getElementById(ce_clear_id[i]))
+                    document.getElementById(ce_clear_id[i]).value = ''
+                }
+        }}>Clear</Button>
 
-            <div className='ce-dropdown-to'>
+        </div>
 
-                <div>Target currency:</div>
-                <Dropdown as={ButtonGroup}>
-                <Dropdown.Toggle variant="outline-secondary" className="ce-dropdown-custom-2">{to_unit}</Dropdown.Toggle>
+          <InputGroup className='ce-input-box'>
+            <FormControl disabled={true} value={res} placeholder="Choose target currency"/>
+            <Dropdown as={ButtonGroup}>
+                <Dropdown.Toggle variant="outline-secondary" className="ce-dropdown-custom">{to_unit}</Dropdown.Toggle>
                 <Dropdown.Menu className="ce-dropdown-menu">
                     <div className='ce-search-bar-group'> 
                         <Dropdown.Divider/>
@@ -120,37 +133,6 @@ const CurrencyExchangeWidget = () => {
 
                 </Dropdown.Menu>
                 </Dropdown>
-            </div>
-        </div>
-        <br />
-
-        <div className='ce-input-box-group'> 
-        <InputGroup onChange={(event) => setAmount(parseFloat(event.target.value))} className='ce-input-box'>
-            <FormControl id='ce-form-control'
-            placeholder="Enter amount"/>
-            <InputGroup.Text >{from_unit}</InputGroup.Text>
-        </InputGroup>
-
-        <div className='ce-button-group'>
-        <Button variant="outline-secondary" className='ce-button-convert' onClick={() => {
-            console.log(`Converting from ${from_unit} to ${to_unit} and the rate is ${rate}`)
-            Number.isInteger(amount) ? setRes((amount * rate).toLocaleString('en-US', { maximumFractionDigits: 2 })) : setRes("Please enter a numeric value")
-        }}>Convert</Button>
-
-        <Button variant="outline-secondary" className='ce-button-clear' onClick={() => {
-            setRes(''); setFilterFrom(''); setFilterTo('')
-            const ce_clear_id = ['ce-form-control', 'ce-filter-from', 'ce-filter-to']
-            for(let i in ce_clear_id){
-                if (document.getElementById(ce_clear_id[i]))
-                    document.getElementById(ce_clear_id[i]).value = ''
-                }
-        }}>Clear</Button>
-
-        </div>
-
-          <InputGroup className='ce-input-box'>
-            <FormControl disabled={true} value={res}/>
-            <InputGroup.Text >{to_unit}</InputGroup.Text>
         </InputGroup>
 
 
