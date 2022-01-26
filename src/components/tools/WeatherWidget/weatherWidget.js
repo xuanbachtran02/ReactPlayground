@@ -27,7 +27,7 @@ function TimeConverter(unix_time) {
 }
 
 const getIcon = (main, clouds, unix_time) => {
-  const [time_map, datestr] = TimeConverter(unix_time)
+  const [time_map] = TimeConverter(unix_time)
   const hour = (time_map['time']).substring(0, 2)
   
   var isDay = (hour >= 6 && hour < 18)? true : false
@@ -94,7 +94,7 @@ const processTime = (unix_time) => {
 }
 
 const getTime = (unix_time) => {
-  const [time_map, datestr] = TimeConverter(unix_time)
+  const [time_map] = TimeConverter(unix_time)
 
   const day_month = parseInt(monthNameToNumStr[time_map['month']]) + '/' + parseInt(time_map['date'])
   const hour_minute = (time_map['time']).substring(0, 5)
