@@ -7,7 +7,6 @@ import MyNavbar from "./components/navbar/Navbar";
 import WeatherWidget from './components/tools/WeatherWidget/weatherWidget';
 import { BrowserRouter as Router, Routes, Route, HashRouter } from "react-router-dom";
 import CurrencyExchangeWidget from './components/tools/CurrencyExchange/currencyExchange';
-import DasgDocuments from './components/tools/DasgDocument/DasgDocument';
 
 function App() {
   return (
@@ -19,7 +18,6 @@ function App() {
        <Route path='/interest' element={<Interest/>} />
        <Route path='/tools/weather_widget' element={<WeatherWidget/>}></Route>
        <Route path='/tools/currency_exchange' element={<CurrencyExchangeWidget/>}> </Route>
-       <Route path='/tools/dasg_documents' element = {<DasgDocuments/>}></Route>
        </Routes>
     </HashRouter>
   );

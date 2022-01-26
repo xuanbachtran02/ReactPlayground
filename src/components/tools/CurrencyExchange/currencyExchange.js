@@ -92,7 +92,8 @@ const CurrencyExchangeWidget = () => {
         <div className='ce-button-group'>
         <Button variant="outline-dark" className='ce-button-convert' onClick={() => {
             console.log(`Converting from ${from_unit} to ${to_unit} and the rate is ${rate}`)
-            Number.isInteger(amount) ? setRes((amount * rate).toLocaleString('en-US', { maximumFractionDigits: 2 })) : setRes("Please enter a numeric value")
+            isNaN(amount) ? setRes("Please enter a numeric value") : setRes((amount * rate).toLocaleString('en-US', { maximumFractionDigits: 2 }))
+    
         }}>Convert</Button>
 
         <Button variant="outline-dark" className='ce-button-clear' onClick={() => {
