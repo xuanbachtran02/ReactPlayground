@@ -24,9 +24,10 @@ const CurrencyExChart = (props) => {
   let data = []
 
   dates.map((date, index) => {
-  if (date.substring(8, 10) == '01'){
+  if (date.substring(8, 10) === '01'){
       labels.push(`${monthNumtoName[date.substring(5, 7)]} ${date.substring(2, 4)}`)
       data.push(yearRate[date][smaller])
+      return
   }
   })
 

@@ -5,7 +5,7 @@ import Projects from './pages/Projects';
 import Interest from './pages/Interest'
 import MyNavbar from "./components/navbar/Navbar";
 import WeatherWidget from './components/tools/WeatherWidget/weatherWidget';
-import { BrowserRouter as Router, Routes, Route, HashRouter } from "react-router-dom";
+import { Routes, Route, HashRouter } from "react-router-dom";
 import CurrencyExchangeWidget from './components/tools/CurrencyExchange/currencyExchange';
 
 function App() {

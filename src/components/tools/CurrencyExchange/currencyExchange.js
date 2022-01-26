@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import React from 'react'
 import { useApi, LoadingAnimation } from'../utils'
 import './currencyExchange.css'
-import { Button, Dropdown, Popover, OverlayTrigger, ButtonGroup, InputGroup, FormControl, Spinner } from 'react-bootstrap'
+import { Button, Dropdown, Popover, OverlayTrigger, ButtonGroup, InputGroup, FormControl } from 'react-bootstrap'
 import CurrencyExChart from './currencyExchangeChart'
 import filterIcon from './curEx-icon/filter-icon.svg'
 
@@ -10,7 +10,7 @@ const popover = (
     <Popover id="popover-basic">
       <Popover.Body>
         This widget fetches the latest exchange rate for given currencies from API provided 
-        by <a href='https://exchangerate.host/#/' target='_blank'>exchangerate.host</a>
+        by <a href='https://exchangerate.host/#/' target='_blank' rel="noreferrer">exchangerate.host</a>
       </Popover.Body>
     </Popover>
   );
@@ -69,7 +69,7 @@ const CurrencyExchangeWidget = () => {
                     <div className='ce-search-bar-group'> 
                     <Dropdown.Divider/>
                         <form className='search-bar-ce'>
-                        <img src={filterIcon} height='30px' width='30px' className='filter-icon'/>
+                        <img src={filterIcon} height='30px' width='30px' className='filter-icon' alt=""/>
                             <label>
                                 <input type="text" onChange={(event) => {setFilterFrom(event.target.value.toUpperCase())}} className='input-search-bar-ce' 
                                 id='ce-filter-from'/>
@@ -115,7 +115,7 @@ const CurrencyExchangeWidget = () => {
                     <div className='ce-search-bar-group'> 
                         <Dropdown.Divider/>
                         <form className='search-bar-ce'>
-                            <img src={filterIcon} height='30px' width='30px' className='filter-icon'/>
+                            <img src={filterIcon} height='30px' width='30px' className='filter-icon' alt='filter icon'/>
                             <label>
                             <input type="text" onChange={(event) => {setFilterTo(event.target.value.toUpperCase())}} className='input-search-bar-ce' id='ce-filter-to'/>
                             </label>
